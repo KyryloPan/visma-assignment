@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import _ from 'lodash';
 
 export default function App() {
   const [fileNameText, setFileNameText] = useState('');
@@ -52,13 +51,12 @@ export default function App() {
   };
 
   const handleClearData = () => {
-    setFileList([
-    ])
+    setFileList([])
     setShowModal(false);
   };
 
   const resultText = () => {
-    let resultText;
+    let resultText = '';
     if (fileNameText) {
       resultText = fileNameText;
     }
@@ -78,7 +76,7 @@ export default function App() {
     return (
       <View style={styles.addRecordMain}>
         <View style={styles.addRecordHead}>
-            <Text>Add Record</Text>
+          <Text>Add Record</Text>
         </View>
         <TouchableOpacity
           style={styles.addRecordHeadCancelBtn}
@@ -189,13 +187,14 @@ const styles = StyleSheet.create({
   leftHead: {
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
+    paddingBottom: 10,
   },
   fileList: {
     padding: 3,
   },
   addRecordMain: {
     flex: 1,
-    width: '90%',
+    width: 300,
     position: 'absolute',
     backgroundColor: '#fff',
     alignItems: 'center',
